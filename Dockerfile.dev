@@ -1,0 +1,16 @@
+FROM docker.io/library/ruby:4.0.2-slim
+
+WORKDIR /rails
+
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config postgresql-client && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+COPY Gemfile Gemfile.lock ./
+COPY vendor/ vendor/
+RUN bundle install
+
+COPY . .
+
+ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+CMD ["./bin/rails", "server"]
