@@ -1,0 +1,9 @@
+<div id="queue-status">
+  <% if status == "enqueued" %>
+    <mark>ENQUEUED</mark> Job <code><%= job_id %></code> &mdash; waiting for worker&hellip;
+  <% elsif status == "completed" %>
+    <mark>COMPLETED</mark> Job <code><%= job_id %></code> finished at <%= Time.current.strftime('%H:%M:%S') %>
+  <% else %>
+    <em>No job enqueued yet.</em>
+  <% end %>
+</div>

@@ -1,0 +1,46 @@
+<%= turbo_stream_from "demo" %>
+
+<main class="container">
+  <h1>Solid Suite Mono DB Demo</h1>
+  <p>All three Solid gems backed by a <strong>single PostgreSQL database</strong>.</p>
+
+  <div class="grid">
+    <article>
+      <header>Solid Cache</header>
+      <p>Write a value to <code>Rails.cache</code> (backed by Solid Cache), then read it back.</p>
+      <div class="grid">
+        <%= button_to "Write to Cache", demo_cache_write_path, class: "contrast" %>
+        <%= button_to "Read from Cache", demo_cache_read_path %>
+      </div>
+      <div id="cache-status">
+        <%= render "demo/cache_status" %>
+      </div>
+    </article>
+
+    <article>
+      <header>Solid Queue</header>
+      <p>Enqueue a background job that sleeps 2s then broadcasts its completion via Turbo Streams.</p>
+      <%= button_to "Enqueue Job", demo_enqueue_job_path, class: "contrast" %>
+      <div id="queue-status">
+        <%= render "demo/queue_status", status: "idle", job_id: nil %>
+      </div>
+    </article>
+
+    <article>
+      <header>Solid Cable</header>
+      <p>Broadcast a message to all connected clients via Action Cable (backed by Solid Cable).</p>
+      <%= button_to "Send Broadcast", demo_broadcast_path, class: "contrast" %>
+      <div id="cable-status">
+        <%= render "demo/cable_status", message: nil %>
+      </div>
+    </article>
+  </div>
+
+  <article>
+    <header>Database Stats</header>
+    <%= button_to "Refresh Stats", demo_stats_path, class: "outline" %>
+    <div id="db-stats">
+      <%= render "demo/stats", stats: @stats %>
+    </div>
+  </article>
+</main>

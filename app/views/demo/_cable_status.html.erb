@@ -1,0 +1,7 @@
+<div id="cable-status">
+  <% if message.present? %>
+    <mark>RECEIVED</mark> <code><%= message %></code>
+  <% else %>
+    <em>No broadcast received yet.</em>
+  <% end %>
+</div>

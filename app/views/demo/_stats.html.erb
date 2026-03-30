@@ -1,0 +1,28 @@
+<div id="db-stats">
+  <table>
+    <thead>
+      <tr>
+        <th>Table</th>
+        <th>Row Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>solid_cache_entries</code></td>
+        <td><%= stats[:cache_entries] %></td>
+      </tr>
+      <tr>
+        <td><code>solid_queue_jobs</code></td>
+        <td><%= stats[:queue_jobs] %></td>
+      </tr>
+      <tr>
+        <td><code>solid_queue_processes</code></td>
+        <td><%= stats[:queue_processes] %></td>
+      </tr>
+      <tr>
+        <td><code>solid_cable_messages</code></td>
+        <td><%= stats[:cable_messages] %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

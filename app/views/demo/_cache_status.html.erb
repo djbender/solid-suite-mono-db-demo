@@ -1,0 +1,15 @@
+<div id="cache-status">
+  <% if defined?(@action) || local_assigns[:action] %>
+    <% act = defined?(@action) ? @action : local_assigns[:action] %>
+    <% val = defined?(@value) ? @value : local_assigns[:value] %>
+    <% is_hit = defined?(@hit) ? @hit : local_assigns[:hit] %>
+    <mark><%= act == "write" ? "WRITTEN" : (is_hit ? "HIT" : "MISS") %></mark>
+    <% if val.present? %>
+      <code><%= val %></code>
+    <% else %>
+      <em>nil</em>
+    <% end %>
+  <% else %>
+    <em>No cache operation yet.</em>
+  <% end %>
+</div>
